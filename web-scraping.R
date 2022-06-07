@@ -26,13 +26,13 @@ data<-url_data %>%
 #basic wrangling
 head(data)  #understand data
 newdata <- data[2:218, 2:5] #subset data
-newdata<-rename(newdata, deaths_per_m = 'Deaths / million') #renmae variables
+newdata<-rename(newdata, Deaths_per_m = 'Deaths / million') #renmae variables
 newdata <- newdata %>%   #convert data type
-  mutate(Deaths = as.numeric(gsub(",","",Deaths)))%>% 
-  mutate(Cases = as.numeric(gsub(",","",Cases)))%>% 
-  mutate(deaths_per_m = as.numeric(gsub(",","",deaths_per_m)))
+  mutate(Deaths = as.numeric(gsub(",", "", Deaths)))%>% 
+  mutate(Cases = as.numeric(gsub(",", "", Cases)))%>% 
+  mutate(Deaths_per_m = as.numeric(gsub(",", "", Deaths_per_m)))
 newdata<-mutate(newdata,
-       Cases_per_m = Cases/(Deaths/deaths_per_m)) #calculation
+       Cases_per_m = Cases/(Deaths/Deaths_per_m)) #calculation
 
 ##Example 2: Scrapting Tables Using HTML node##
 #extract table
