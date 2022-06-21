@@ -1,0 +1,16 @@
+install.packages('tidyverse')
+install.packages('devtools')
+install.packages('quanteda')
+
+library(tidyverse)
+library(devtools)
+library(quanteda)
+
+devtools::install_github("quanteda/quanteda.corpora")
+devtools::install_github("quanteda/quanteda.sentiment")
+devtools::install_github("quanteda/quanteda.textplots")
+devtools::install_github("quanteda/quanteda.textstats")
+library(quanteda.corpora)
+library(quanteda.textplots)
+library(quanteda.textstats)
+library(quanteda.sentiment)
