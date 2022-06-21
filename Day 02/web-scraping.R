@@ -34,7 +34,7 @@ newdata <- newdata %>%   #convert data type
   mutate(Deaths_per_m = as.numeric(gsub(",","",Deaths_per_m)))
 newdata <- mutate(newdata,
        Cases_per_m = Cases/(Deaths/Deaths_per_m)) #calculation
-
+newdata$Country[2]
 
 ##Example 2: Scraping Tables Using HTML node##
 #extract table
@@ -44,17 +44,19 @@ gdp <- html_table(gdp, fill = TRUE) #convert table into dataframe
 
 #basic wrangling
 head(gdp)
+dim(gdp)
 newgdp <- gdp[2:231, ]#subset data
 newgdp <- newgdp[, !duplicated(colnames(newgdp))] #remove duplicated columns
 newgdp <- rename(newgdp, Country = 'Country/Territory') #rename variable
 newgdp <- rename(newgdp, GDP_WB = 'World Bank[7]') #rename variable
+
 newgdp <- newgdp %>% 
   mutate(GDP_WB = as.numeric(gsub(",","",GDP_WB)))%>% #covert data type
   mutate(Country = gsub("\\*|\\(|\\)","",Country))%>% #remove * in country names
-  mutate(Country = gsub("[[:space:]]","",Country)) #remove space in country names
+  mutate(Country = gsub("[^0-9A-Za-z///' ]","",Country)) #remove ugly stff
+newgdp$Country[1]
 
 #merge datasets from Example 1 &2
-
 merge <- merge(newdata, newgdp, by="Country") 
 merge$UNRegion <- as.factor(merge$'UN Region')
 
