@@ -3,12 +3,15 @@
 #######################################
 
 ##Day 2 Collecting Digital Trace Data##
-##Part 2: Twitter API## 
-##Author: Shuning Lu####
+##       Part 2: Twitter API         ## 
+##       For academic API            ##
+##       Author: Shuning Lu        ####
 
-#install and load packages::academictwitteR, tidyverse, dbplyr, ggplot2
+
+#install and load packages::academictwitteR, tidyverse, dbplyr, ggplot2, readr
 
 library(academictwitteR)
+library(readr)
 library(tidyverse)
 library(dbplyr)
 library(ggplot2)
@@ -20,17 +23,16 @@ library(ggplot2)
 
 
 #set up your bearer 
-bearer_token <- "insert your own bearer here"
-
+bearer_token <- read_file("bearer_token.txt")
 
 #create your query based on hashtags
-tweets1 <- get_all_tweets(query = "#GunControl OR #GunViolence", 
+tweets <- get_all_tweets(query = "#GunControl OR #GunViolence", 
                           start_tweets = "2022-06-01T00:00:00Z", #start date 
-                          end_tweets = "2022-06-02T00:00:00Z", #end date
+                          end_tweets = "2022-06-11T00:00:00Z", #end date
                           bearer_token = bearer_token, #bearer token to access Twitter API 
                           file = "gunissue1", #name of the RDS file 
                           data_path = "data/", #data path to store the RDS file
-                          n = 100)  #set an upper limit of tweets, 100 is the default limit, n = Inf allows you to get all tweets matching the criteria  
+                          n = 5000)  #set an upper limit of tweets, 100 is the default limit, n = Inf allows you to get all tweets matching the criteria  
 
 class(tweets1)#file format
 names(tweets1)#column names
