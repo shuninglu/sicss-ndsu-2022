@@ -160,7 +160,7 @@ plot(sicss.comm1, sicss.net, vertex.size=4, vertex.label=NA,
      edge.arrow.mode=0, layout=layout_with_fr) 
 
 #https://igraph.org/r/doc/cluster_fast_greedy.html
-sicss.comm2 <- cluster_edge_betweenness(as.undirected(sicss.net)) 
+sicss.comm2 <- cluster_fast_greedy(as.undirected(sicss.net)) 
 plot(sicss.comm2, sicss.net, vertex.size=4, vertex.label=NA, 
      edge.arrow.mode=0, layout=layout_with_fr) 
 
