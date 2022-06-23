@@ -116,13 +116,12 @@ plot(sicss.net,
      layout = layout_with_kk) #stress-minimization layout algorithm
 
 #adding node size based on indegree
-V(sicss.net)$screen_name <- sicss.net$screen_name
 plot(sicss.net, 
      edge.color = "grey", edge.width = 0.6, edge.curved = 0.4, #edge attributes
      edge.arrow.mode=1, edge.arrow.size = 0.1,#arrow attributes
      vertex.size = log(in_degree+8)*1.5, vertex.shape = "circle",    #vertex attributes
      vertex.color = "skyblue", vertex.frame.color = "white",     #vertex attributes
-     vertex.label = ifelse(in_degree > 30, sicss$screen_name, NA), #only show top nodes
+     vertex.label = ifelse(in_degree > 30, V(sicss.net)$name, NA), #only show top nodes
      vertex.label.color = "black", 
      vertex.label.cex = 0.6, vertex.label.degree = -pi/2,
      layout=layout_with_fr) #stress-minimization layout algorithm
