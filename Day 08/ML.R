@@ -11,8 +11,9 @@ library(stringr)
 library(tidyr)
 library(yardstick)
 library(pROC)
-library(tidytext) # unique to this example
-library(sentimentr) # unique to this example
+library(tidytext)
+library(sentimentr)
+library(themis)
 
 # Load hate speech data
 hate <- read_csv("https://github.com/t-davidson/hate-speech-and-offensive-language/blob/master/data/labeled_data.csv?raw=true")
