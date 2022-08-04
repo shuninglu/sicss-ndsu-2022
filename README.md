@@ -1,3 +1,3 @@
 # sicss-ndsu
 
-This repository contains lecture notes and tutorials at SICSS-NDSU, June 2022. 
+This repository contains lecture notes, tutorials and group projects at SICSS-NDSU 2022. 
